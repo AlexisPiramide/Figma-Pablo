@@ -1,0 +1,221 @@
+:root{
+    --primary: #123A63;
+    --secondary: #9AB1ED;
+    --vhsize: 16vh;
+    --padingbase: 10px;
+    --fontnav: 2em;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    align-self: center;
+}
+
+body{
+    margin:0;
+}
+
+
+nav{
+    background-color: var(--primary);
+    height: 18vh;
+    display: flex;
+    align-items: center;
+    font-family: 'Neuton';
+    padding: 20px;
+    gap: 5%;
+}
+
+nav > div.usuario > a,nav > div.navegador{
+    display: flex;
+}
+
+nav{
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+
+nav > div{
+    display: flex;
+}
+
+div:nth-child(6){
+    display: none;
+}
+
+/* Selecting the first and second child elements of nav */
+nav > div:nth-child(1),
+nav > h2,
+nav > div.usuario{
+    flex-basis: 14%;
+}
+
+/* Selecting the third child element of nav */
+nav > div.navegador {
+    flex-basis: 39%;
+}
+
+
+nav > div > img:nth-child(2),nav > img:nth-child(7) {
+    display: none;
+}
+
+nav > div > img{
+    width: 120px;
+    height: 120px;
+}
+nav > h2{
+    font-size: var(--fontnav);
+    font-weight:lighter;
+}
+
+.usuario{
+    width: 10em;
+}
+.usuario > a > img{
+    width: 80px;
+    height: 80px;
+    align-self: center;
+    padding: 0 var(--padingbase) var(--padingbase) 0;
+}
+
+.usuario{
+    margin-top: var(--padingbase);
+}
+
+.usuario > h2{
+    align-self: flex-end;
+    margin: 0;
+    font-size: var(--fontnav);
+    font-weight:lighter;
+}
+.usuario > a:link{
+    padding-bottom: var(--padingbase);
+}
+
+.navegador{
+    background-color: white;
+    padding: 5px;
+    justify-content: space-between;
+ 
+    box-sizing: border-box;
+}
+
+.navegador > button{
+    background-color: white;    
+}
+
+.navegador > button > img:hover{
+    background-color: white;   
+    border-radius: 5px;
+}
+
+.navegador > input {
+    border: none;
+    width: 100%;
+}
+.navegador button{
+    border-left: 2px solid var(--primary);
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+}
+
+.navegador img {
+    object-fit:fill;
+    width: 40px;
+    height: 40px;
+}
+
+@media screen and (max-width: 999px) {
+
+    nav{
+        flex-direction: row;
+        display: flex;
+        padding-left: 20px;
+        margin: 0px;
+        height: 10vh;
+        justify-content: space-between
+    }
+    
+    nav > div > img:nth-of-type(2){
+        display: block;
+    }
+    
+    div:nth-child(6) > img{
+        display: block;
+        width: 80px;
+        height: 80px;
+    }
+
+    nav > div:nth-child(1) > img:nth-child(1){
+        display: none;
+    }
+    
+    nav > div > img{
+        width: 40px;
+        height: 40px;
+    }
+    
+    nav > div:nth-child(1),
+    nav > div.logo{
+        padding-left: 20px;
+    }
+    
+    /* Selecting the third child element of nav */
+    nav > div.navegador {
+     display: none;
+    }
+
+    .usuario {
+        display: none;
+    }
+    
+    nav > h2 {
+        display: none;
+    }
+    
+    .navegador{
+        box-sizing: border-box;
+    }
+    
+    nav > .logo{
+        display: block;
+        padding-right: 20px;
+    }
+
+    nav > div.navegador{
+        background-color: white;
+        justify-content: space-between;
+        gap:10px;
+    }
+    
+    .navegador > button{
+        background-color: white;    
+    }
+    
+    
+    .navegador > button > img:hover{
+        background-color: #123A63;   
+        border-radius: 5px;
+    }
+
+    .navegador > input {
+
+        border: none;
+        width:max-content;
+    }
+    .navegador button{
+        border-left: 2px solid #123A63;
+        border-right: none;
+        border-top: none;
+        border-bottom: none;
+    }
+    
+    .navegador img {
+        object-fit:fill;
+        width: 40px;
+        height: 40px;
+    }
+}

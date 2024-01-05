@@ -1,0 +1,43 @@
+:root{
+    --primary: #123A63;
+    --secondary: #9AB1ED;
+    --vhsize: 10vh;
+    --padingbasefooter: 50px;
+}
+
+body{
+    margin:0;
+}
+
+footer{
+    background-color: var(--primary);
+    display: flex;
+    height: var(--vhsize);
+    padding: var(--padingbasefooter);
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+footer > a > img{
+    height: 80px;
+    width: 80px;
+}
+
+
+@media screen and (max-width: 999px) {
+    footer{
+        flex-direction: row;
+        height: 5vh;
+    }
+    footer > a > img{
+        height: 40px;
+        width: 40px;
+    }
+}
