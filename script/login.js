@@ -6,36 +6,36 @@ function login() {
 
 function formulariologin(e) {
     e.preventDefault();
+
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
+    
+    
+    let url = 'http://52.204.24.4:3000/usuarios';
 
-    fetch('/api/login', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username: username, password: password })
-    })
+    fetch(url)
     .then(response => response.json())
     .then(data => {
-
-        if (data.password === password) {
-            var fechavalidez = new Date();
-            fechavalidez.setDate(fechavalidez.getDate() + 7);
-            /**Esto esta hecho para poner un token de forma basica por si acaso*/
-            var token = generateToken(9);
-            
-            let datosusuario = {
-                loginToken: token,
-                usuario: username,
-                fechaexpiracion: fechavalidez.toISOString(),
-                imagenUrl: "https://example.com/path/to/image.jpg"
-            };
-            
-            localStorage.setItem('datosusuario', JSON.stringify(datosusuario));
-            alert('Inicio de sesión exitoso, recargue la página');
-        } else {
-            alert('Nombre de usuario o contraseña incorrectos, por favor intente nuevamente');
+        if(data){
+            data.forEach(usuario => {    
+            if (usuario.password == password) {
+                var fechavalidez = new Date();
+                fechavalidez.setDate(fechavalidez.getDate() + 7);
+                
+                let datosusuario = {
+                    usuario: username,
+                    fechaexpiracion: fechavalidez.toISOString(),
+                    imagenUrl: usuario.imagen
+                };
+                
+                localStorage.setItem('datosusuario', JSON.stringify(datosusuario));
+                window.location.href = 'index.html';
+            } else {
+                alert('Nombre de usuario o contraseña incorrectos, por favor intente nuevamente');
+            }
+        });
+        }else{
+            alert("El usuario no existe")
         }
     })
     .catch(error => {
@@ -43,18 +43,4 @@ function formulariologin(e) {
         alert('Se produjo un error durante el inicio de sesión, por favor intente nuevamente');
     });
 }
-
-/**Esto esta hecho para poner un token de forma basica por si acaso*/
-function generateToken(length) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let token = '';
-
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        token += characters.charAt(randomIndex);
-    }
-
-    return token;
-}
-
 

@@ -1,0 +1,24 @@
+{
+    "usuarios": [
+        {
+            "username": "Pepe",
+            "password": "18175118N",
+            "imagen": "https://placehold.co/600x400"
+        },
+        {
+            "username": "Pablo",
+            "password": "18175118N",
+            "imagen": "https://placehold.co/400x400"
+        }
+    ],
+    "articulos": [
+        {
+            "name": "Articulo 1",
+            "price": "155"
+        },
+        {
+            "name": "Articulo 2",
+            "price": "519"
+        }
+    ]
+}

@@ -12,6 +12,8 @@
     <link href='https://fonts.googleapis.com/css?family=Neuton' rel='stylesheet'>
     <script src="/script/CustomNav.js"></script>
     <script src="/script/CustomFooter.js"></script>
+    <script src="/script/login.js"></script>
+    <script src="/script/cargarusuario.js"></script>
 </head>
 
 <body>
@@ -19,10 +21,10 @@
     
     <div class="cuerpo">
         <div class="cuerpo">
-            <form action="/action_page.php">
+            <form id="login-form" action="/index.html">
                 <h2>LOGIN</h2>
-                <input type="text" id="fname" name="fname" placeholder="Usuario">
-                <input type="text" id="lname" name="lname" placeholder="Contraseña">
+                <input type="text" id="username" name="username" placeholder="Usuario">
+                <input type="password" id="password" name="password" placeholder="Contraseña">
                 <input type="submit" value="Iniciar Sesion">
               </form> 
         </div>
