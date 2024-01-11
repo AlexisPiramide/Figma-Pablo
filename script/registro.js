@@ -1,58 +1,87 @@
 document.addEventListener("DOMContentLoaded", registro);
 
 function registro() {
-    document.getElementById('login-form').addEventListener('submit', formularioregistro);
+
+    document.getElementById('password').addEventListener('change', comprobarContraseña())
 }
 
-function formularioregistro(e) {
+function formularioregistro() {
     e.preventDefault();
+}
 
-    var usuario = document.getElementById('usuario').value;
-    var password = document.getElementById('password').value;
-    var cfpassword = document.getElementById('cfpassword').value;
+function comprobarContraseña(){
+    document.getElementById('password').addEventListener('change', comprobar8caracteres);
+    document.getElementById('password').addEventListener('change', comprobarMayus);
+    document.getElementById('password').addEventListener('change', comprobarNum);
+    document.getElementById('password').addEventListener('change', comprobarEspecial);
+    document.getElementById('cfpassword').addEventListener('change', contraseñaCoincide);
+}
 
-    if(password == password){
-    
-    
-    let url = 'http://52.204.24.4:3000/usuarios';
-     
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        if(data){
-            data.forEach(usuario => {    
-            if (usuario.password == password) {
-                var fechavalidez = new Date();
-                fechavalidez.setDate(fechavalidez.getDate() + 7);
-                
-                let datosusuario = {
-                    usuario: username,
-                    fechaexpiracion: fechavalidez.toISOString(),
-                    imagenUrl: usuario.imagen
-                };
-                
-                localStorage.setItem('datosusuario', JSON.stringify(datosusuario));
-                window.location.href = 'index.html';
-            } else {
-                alert('Nombre de usuario o contraseña incorrectos, por favor intente nuevamente');
-            }
-        });
-        }else{
-            alert("El usuario no existe")
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Se produjo un error durante el inicio de sesión, por favor intente nuevamente');
-    });
-    }
-    else{
-        alert("Las contraseñas no coinciden")
+function contraseñaCoincide() {
+    const password = document.getElementById('password').value;
+    const cfpassword = document.getElementById('cfpassword').value;
+    const coinciden = document.getElementById('coinciden');
+
+    if (cfpassword === password) {
+        coinciden.src = "/img/check.png";
+        return true;
+    } else {
+        coinciden.src = "/img/cross.png";
+        return false;
     }
 }
 
-function compcontraseña(contraseña){
-    if(contraseña.lenght < 8){
 
+function comprobar8caracteres() {
+    const contraseña = document.getElementById('password').value;
+    const caracteres = document.getElementById('caracteres');
+    console.log('Contraseña:', contraseña);
+    console.log('Contraseña:', contraseña.length);
+    
+    if (contraseña.length > 7) {
+        caracteres.src = "/img/check.png";
+        return true;
+    } else {
+        caracteres.src = "/img/cross.png";
+        return false;
+    }
+}
+
+function comprobarMayus() {
+    const contraseña = document.getElementById('password').value;
+    const mayus = document.getElementById('mayus');
+   
+    if (contraseña.match(/[A-Z]/g)) {
+        mayus.src = "/img/check.png";
+        return true;
+    } else {
+        mayus.src = "/img/cross.png";
+        return false;
+    }
+}
+
+function comprobarNum() {
+    const contraseña = document.getElementById('password').value;
+    const numero = document.getElementById('numero');
+
+    if (contraseña.match(/.*[0-9]/)) {
+        numero.src = "/img/check.png";
+        return true;
+    } else {
+        numero.src = "/img/cross.png";
+        return false;
+    }
+}
+
+function comprobarEspecial() {
+    const contraseña = document.getElementById('password').value;
+    const especial = document.getElementById('especial');
+
+    if (contraseña.match(/[^\w]/)) {
+        especial.src = "/img/check.png";
+        return true;
+    } else {
+        especial.src = "/img/cross.png";
+        return false;
     }
 }

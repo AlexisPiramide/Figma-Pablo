@@ -13,6 +13,7 @@
     <script src="/script/CustomNav.js"></script>
     <script src="/script/CustomFooter.js"></script>
     <script src="/script/cargarusuario.js"></script>
+    <script src="/script/registro.js"></script>
 </head>
 
 <body>
@@ -22,11 +23,22 @@
         <form action="/action_page.php">
             <h2 class="unico">Registro</h2>
             <input type="text" id="usuario" name="usuario" placeholder="Usuario" class="medio">
-            <input type="text" id="password" name="password" placeholder="Contraseña" class="medio">
-            <input type="text" id="date" name="date" placeholder="Fecha de Nacimiento" class="medio">
-            <input type="text" id="cfpassword" name="cfpassword" placeholder="Confirmar Contraseña" class="medio">
+            <input type="password" id="password" name="password" placeholder="Contraseña" class="medio">
+            <input type="date" id="date" name="date" placeholder="Fecha de Nacimiento" class="medio">
+            <input type="password" id="cfpassword" name="cfpassword" placeholder="Confirmar Contraseña" class="medio">
             <input type="email" id="email" name="email" placeholder="Correo Electronico "class="unico">
+           
             <input type="submit" value="Registrase" class="unico">
+            <div>
+                <ul>
+                    <li>8 caracteres <img id="caracteres" src="/img/cross.png"> |</li>
+                    <li>Mayuscula <img id="mayus" src="/img/cross.png"> |</li>
+                    <li>Numero <img id="numero" src="/img/cross.png"> |</li>
+                    <li>Caracter Especial <img id="especial" src="/img/cross.png"> </li>
+
+                    <li>Coinciden Contraseñas <img id="coinciden" src="/img/cross.png"> </li>
+                </ul>
+            </div>
           </form> 
     </div>
 

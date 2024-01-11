@@ -91,3 +91,14 @@ form>input {
     }
 
 }
+
+
+form > div > ul{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+form > div > ul img{
+    width: 15px;
+    height: 15px;
+}
